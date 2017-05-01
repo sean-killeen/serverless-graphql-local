@@ -1,0 +1,49 @@
+service: blog-poc
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpackIncludeModules: true;
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamoDB:Query
+        - dynamoDB:PutItem
+        - dynamoDB:GetItem
+        - dynamoDB:Scan
+        - dynamoDB:UpdateItem
+      Resource: "arn:aws:dynamodb:eu-west-1:*:*"
+
+functions:
+  postsPost:
+    handler: posts.posts
+    events:
+      - http:
+          method: POST
+          path: /
+          request:
+            passThrough: NEVER
+      - s3: blog-poc-post
+
+resources:
+  Resources:
+    PostsDynamoTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Posts
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
