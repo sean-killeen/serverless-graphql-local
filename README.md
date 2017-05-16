@@ -23,6 +23,10 @@ In a terminal, browse to the App folder:
     npm i
     npm i serverless -g
 
+You will aslo need to add the following environment variables to your machine:
+
+    NODE_ENV = DEV   
+
 ## Test the App locally
 
 To build the app for local use:
@@ -61,7 +65,7 @@ To deploy the app to AWS you will need an aws account.  You can configure your A
 
      serverless config  credentials --provider aws --key <ACCESS KEY ID> --secret <SECRET ACCESS KEY>
 
-you will aslo need to add the following environment variables to your machine:
+You will aslo need to add the following environment variables to your machine:
 
     AWS_ACCESS_KEY_ID = <ACCESS KEY ID> 
     AWS_SECRET_ACCESS_KEY = <SECRET ACCESS KEY>
