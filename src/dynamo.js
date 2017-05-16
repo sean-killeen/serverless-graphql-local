@@ -1,10 +1,13 @@
 import Promise from 'bluebird';
 import AWS from 'aws-sdk';
+console.log("process:" + process.env.DEV);
 if (process.env.DEV){
     AWS.config.update({
         sessionToken: process.env.AWS_SESSION_TOKEN,
         region: "eu-west-1",
-        endpoint: "http://localhost:8000"
+        endpoint: "http://localhost:8000",
+        accesskey: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     });
 }
 else{

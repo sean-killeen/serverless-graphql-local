@@ -42,6 +42,7 @@ Note that the port is configurable in `index.js`
 There are scripts included under local/seed to create data for local testing.
 Execute them using:
 
+    cd local/seed
     node create_table.js
     node insert_items.js
 
@@ -56,9 +57,18 @@ You can clear out data also:
 
 ## Deploy the App
 
-To deploy the app to AWS you will need an aws account.
+To deploy the app to AWS you will need an aws account.  You can configure your AWS credentials using the following command:
 
-    Serverless deploy // sls deploy will also work
+     serverless config  credentials --provider aws --key <ACCESS KEY ID> --secret <SECRET ACCESS KEY>
+
+you will aslo need to add the following environment variables to your machine:
+
+    AWS_ACCESS_KEY_ID = <ACCESS KEY ID> 
+    AWS_SECRET_ACCESS_KEY = <SECRET ACCESS KEY>
+
+Once this has been done, you should be able to deploy:
+
+    serverless deploy
 
 
 
