@@ -57,6 +57,44 @@ You can clear out data also:
 
 ## Sample Query
 
+Browse to:
+
+    http://localhost:5000/
+
+In GraphiQL, enter:
+```
+query {
+    posts {
+        id
+    }
+}
+```
+
+you should see the following results:
+
+```
+{
+  "data": {
+    "posts": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "4"
+      },
+      {
+        "id": "3"
+      },
+      {
+        "id": "5"
+      },
+      {
+        "id": "2"
+      }
+    ]
+  }
+}
+```
 
 
 ## Deploy the App

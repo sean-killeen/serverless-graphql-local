@@ -1,6 +1,6 @@
 import Promise from 'bluebird';
 import AWS from 'aws-sdk';
-console.log("process:" + process.env.NODE_ENV);
+console.log("Environment:" + process.env.NODE_ENV);
 if (process.env.NODE_ENV = "DEV"){
     AWS.config.update({
         sessionToken: process.env.AWS_SESSION_TOKEN,
